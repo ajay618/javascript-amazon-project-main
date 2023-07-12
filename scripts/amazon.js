@@ -82,7 +82,5 @@ const products =[
        `;
     })
 
-    console.log(productsHTML);
-
-    document.querySelector('.js-product-grid').innerHTML=productsHTML;
+   document.querySelector('.js-product-grid').innerHTML=productsHTML;
     
