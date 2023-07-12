@@ -26,7 +26,7 @@
      </div>
 
      <div class="product-quantity-container">
-       <select>
+       <select class="js-quantity-selector-${product.id}" data-testid="quantity-selector">
          <option selected value="1">1</option>
          <option value="2">2</option>
          <option value="3">3</option>
@@ -61,6 +61,8 @@
     (button) => {
       button.addEventListener('click', () =>{
          let productId= button.dataset.productId;
+         let Quantity=document.querySelector(`.js-quantity-selector-${productId}`);
+         let value =Number(Quantity.options[Quantity.selectedIndex].value);
         
         let matchingItem;
 
@@ -73,12 +75,12 @@
          });
 
          if (matchingItem){
-           matchingItem.quantity+=1;
+           matchingItem.quantity+=value;
          } else { 
 
          cart.push({
           productId:productId,
-          quantity:1
+          quantity:value
          });
         }
          
@@ -90,7 +92,6 @@
          } );
 
          document.querySelector('.js-cart-quantity').innerHTML = cartQuantity;
-         
       });
    })
     
