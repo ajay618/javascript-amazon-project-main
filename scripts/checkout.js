@@ -3,12 +3,6 @@ const cartItems=localStorage.getItem('Cart');
 
 let AllCart = JSON.parse(cartItems);
 
-//const today = new Date();
-
-//const freeShippingDate=today.add(10).day();
-
-console.log(AllCart);
-
 const length= AllCart.length;
 
 document.querySelector('.js-items').innerHTML=`${length} items`;
