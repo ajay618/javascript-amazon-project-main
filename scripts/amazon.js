@@ -48,7 +48,7 @@
      </div>
 
      <button class="add-to-cart-button button-primary js-add-to-cart"
-     data-product-id="${product.id}">
+     data-product-id="${product.id}" data-product-price="${product.priceCents}" data-product-name="${product.name}" data-product-image="${product.image}">
        Add to Cart
      </button>
    </div>
@@ -61,6 +61,9 @@
     (button) => {
       button.addEventListener('click', () =>{
          let productId= button.dataset.productId;
+         let price= button.dataset.productPrice;
+         let name =button.dataset.productName;
+         let image =button.dataset.productImage;
          let Quantity=document.querySelector(`.js-quantity-selector-${productId}`);
          let value =Number(Quantity.options[Quantity.selectedIndex].value);
         
@@ -80,7 +83,10 @@
 
          cart.push({
           productId:productId,
-          quantity:value
+          quantity:value,
+          price:price,
+          name:name,
+          image:image
          });
         }
          
@@ -92,6 +98,7 @@
          } );
 
          document.querySelector('.js-cart-quantity').innerHTML = cartQuantity;
+         localStorage.setItem('Cart',JSON.stringify(cart));
       });
    })
     
